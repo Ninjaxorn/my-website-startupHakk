@@ -21,6 +21,18 @@
   --font:         'Segoe UI', system-ui, sans-serif;
 }
 
+[data-theme="light"] {
+  --bg:           #f5f3ee;
+  --bg-alt:       #ede9e0;
+  --bg-card:      #ffffff;
+  --border:       #d6ccb4;
+  --text:         #1a1a2e;
+  --text-muted:   #5a5a7a;
+  --accent:       #b8860b;
+  --accent-hover: #d4a017;
+  --accent-dim:   rgba(184, 134, 11, 0.12);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -31,6 +43,7 @@ body {
   font-family: var(--font);
   font-size: 1rem;
   line-height: 1.7;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 a {
@@ -78,7 +91,41 @@ ul {
   background-color: rgba(10, 22, 40, 0.9);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
+  transition: background-color 0.3s, border-color 0.3s;
 }
+
+[data-theme="light"] .nav {
+  background-color: rgba(245, 243, 238, 0.9);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background-color: var(--accent-dim);
+}
+
+.theme-toggle-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Moon icon in dark mode, sun icon in light mode */
+[data-theme="dark"] .theme-toggle-icon::before  { content: '☾'; color: var(--accent); }
+[data-theme="light"] .theme-toggle-icon::before { content: '☀'; color: var(--accent); }
 
 .nav-logo {
   font-size: 1.2rem;

@@ -9,6 +9,9 @@
 <body>
 
   <header class="nav">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+      <span class="theme-toggle-icon"></span>
+    </button>
     <a href="#" class="nav-logo">MT</a>
     <nav>
       <a href="#about">About</a>
@@ -172,6 +175,23 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const toggle = document.getElementById('themeToggle');
+    const root   = document.documentElement;
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      toggle.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+    }
+
+    const saved = localStorage.getItem('theme') || 'dark';
+    applyTheme(saved);
+
+    toggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    });
   </script>
 
 </body>
