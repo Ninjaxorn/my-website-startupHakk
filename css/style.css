@@ -210,6 +210,55 @@ ul {
 }
 
 /* ============================================================
+   Skills
+   ============================================================ */
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-width: 600px;
+}
+
+.skill-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.skill-bar-pct {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.skill-bar-track {
+  height: 8px;
+  background-color: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  width: var(--pct);
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  border-radius: 999px;
+  transform-origin: left;
+  animation: bar-grow 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes bar-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ============================================================
    About
    ============================================================ */
 .about-grid {
@@ -340,6 +389,12 @@ ul {
   font-size: 0.85rem;
   border-top: 1px solid var(--border);
   background-color: var(--bg);
+}
+
+.footer-sub {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--border);
 }
 
 /* ============================================================
